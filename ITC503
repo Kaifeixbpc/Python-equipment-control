@@ -1,0 +1,70 @@
+Created on Tue Oct  9 13:22:52 2018
+
+@author: kaifei
+"""
+
+import visa
+rm=visa.ResourceManager()
+
+class ITC503():
+    
+    def __init__(self):
+        
+        self.inst = rm.open_resource('GPIB::24::INSTR')
+        self.inst.write_termination='\r'
+        self.inst.read_termination='\r'
+        
+# functions for setting the ITC503  
+        
+    def set_temp(self,value):
+        self.inst.write('T'+str(value))
+        print(self.inst.read())
+        
+    def auto_heater(self):
+        self.inst.write('A1')
+
+    def auto_PID(self):
+        self.inst.write('L1')
+        
+#functions for readings
+
+    def R1(self):
+        self.r1=self.inst.write('R1')
+        self.r1=self.r1.strip('R')
+        return self.r1
+    
+    def R2(self):
+        self.r1=self.inst.write('R2')
+        self.r1=self.r1.strip('R')
+        return self.r1
+    
+    def R3(self):
+        self.r1=self.inst.write('R3')
+        self.r1=self.r1.strip('R')
+        return self.r1
+    
+    def R4(self):
+        self.r1=self.inst.write('R4')
+        self.r1=self.r1.strip('R')
+        return self.r1
+    
+    def R5(self):
+        self.r1=self.inst.write('R5')
+        self.r1=self.r1.strip('R')
+        return self.r1
+    
+    def R6(self):
+        self.r1=self.inst.write('R6')
+        self.r1=self.r1.strip('R')
+        return self.r1
+    
+    def R7(self):
+        self.r1=self.inst.write('R7')
+        self.r1=self.r1.strip('R')
+        return self.r1
+    
+    def R8(self):
+        self.r1=self.inst.write('R8')
+        self.r1=self.r1.strip('R')
+        return self.r1
+    
